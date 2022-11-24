@@ -1,0 +1,64 @@
+Esernyők
+
+Routing
+
+    renderMW
+
+    middlewares/user/
+        getUsersMW.js
+        getUserMW.js
+        saveUserMW.js
+        delUserMW.js
+
+    middlewares/umbrella/
+        getUmbrellasMW.js
+        getUmbrellaMW.js
+        saveUmbrellaMW.js
+        delUmbrellaMW.js
+
+    GET /                                               - index.html
+        getUmbrellasMW
+        renderMW(index.html)
+
+    GET /user/list                                      - users.html
+        getUsersMW
+        renderMW(users.html)
+
+    GET /user/:userid                                   - user.html
+        getUserMW
+        getUmbrellasMW
+        renderMW(user.html)
+
+    GET, POST /user/new                                 - addUser.html
+        saveUserMW
+        render(addUser.html)
+            - IF voltak beküldve form elemek, azzal töltse fel
+            - ELSE üres minden
+
+    GET, POST /user/edit/:userid                        - editUser.html
+        getUserMW
+        saveUserMW
+        renderMW(editUser.html)
+
+    GET /user/delete/:userid
+        getUserMW - ellenőrzi van-e, ha van király, ha nem akkor /users
+        delUserMW - töröl, átirányítja a felhasználót
+
+    GET /umbrella/:umbrellaid                           - umbrella.html
+        getUmbrellaMW
+        render(umbrella.html)
+
+    GET, POST /umbrella/new/:userid                     - addUmbrella.html
+        getUserMW
+        saveUmbrellaMW
+        render(addUmbrella.html)
+
+    GET, POST /umbrella/edit/:userid/:umbrellaid        - editUmbrella.html
+        getUserMW
+        getUmbrellaMW (---> paraméterből kivesz id-t)
+        saveUmbrellaMW
+        render(editUmbrella.html)
+
+    GET /umbrella/delete/:umbrellaid
+        getUmbrellaMW
+        delUmbrellaMW       - /user/:userid

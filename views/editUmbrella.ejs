@@ -1,0 +1,77 @@
+<%- include('header', {pagetitle: 'Módosítás'}) -%>
+<%- include('navbar', {active: 'none'}) -%>
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <h1>Adatok módosítása</h1>
+        </div>
+    </div>
+</div>
+<br>
+<br>
+
+<div class="container">
+    <div class="row">
+        <div class="col-6">
+            <h2>Név:</h2>
+        </div>
+        <div class="col-6">
+            Viharkabát
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-6">
+            <h2>Szín:</h2>
+        </div>
+        <div class="col-6">
+            fekete
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-6">
+            <h2>Tulajdonos:</h2>
+        </div>
+        <div class="col-6">
+            Laci
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-6">
+            <h2>Szobaszám:</h2>
+        </div>
+        <div class="col-6">
+            <form method="POST">
+                <div class="form-group">
+                    <input type="text" class="form-control" id="exampleInputRoomNum" value="<%=user.room%>">
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-6">
+            <h2>Asztal:</h2>
+        </div>
+        <div class="col-6">
+            <form method="POST">
+                <div class="form-group">
+                    <input type="text" class="form-control" id="exampleInputTable" value="<%=user.table%>">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<br>
+<br>
+
+<div class="container">
+    <div class="row">
+        <div class="col-6">
+            <input type="submit" href="/user/:userid" class="btn btn-block btn-primary" value="Mentés"/>
+        </div>
+        <div class="col-6">
+            <a href="/user/:userid" class="btn btn-block btn-danger">Törlés</a>
+        </div>
+    </div>
+</div>
+<%- include('footer') -%>

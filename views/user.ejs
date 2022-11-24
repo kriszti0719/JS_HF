@@ -1,0 +1,73 @@
+<%- include('header', {pagetitle: 'Felhasználói adatok'}) -%>
+<%- include('navbar', {active: 'users'}) -%>
+
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <h1><h4><%=user.nname%></h4></h1>
+        </div>
+    </div>
+</div>
+<br>
+<br>
+
+<div class="container">
+    <div class="row">
+        <div class="col-6">
+            <h2>Becenév:</h2>
+        </div>
+        <div class="col-6">
+            <h4><%=user.nname%></h4>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-6">
+            <h2>Szobaszám:</h2>
+        </div>
+        <div class="col-6">
+            <h4><%=user.room%></h4>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-6">
+            <h2>Asztal:</h2>
+        </div>
+        <div class="col-6">
+            <h4><%=user.table%></h4>
+        </div>
+    </div>
+</div>
+<br>
+<br>
+
+<div class="container">
+    <div class="row">
+        <div class="col-6">
+            <h2>Esernyők:</h2>
+        </div>
+    </div>
+    <div class="row">
+        <table class="table">
+            <thead class="thead-light">
+            <tr>
+                <th scope="col">Név</th>
+                <th scope="col">&nbsp;</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>
+                    Viharkabát
+                </td>
+                <td>
+                    <a href="/umbrella/edit/:userid/:umbrellaid"><i class="fa-solid fa-pen-to-square"></i></a>
+                    <a href="/user"><i class="fa-solid fa-trash-can"></i></a>
+                </td>
+
+            </tr>
+            </tbody>
+        </table>
+        <a href="/umbrella/:umbrellaid" class="btn btn-block btn-primary">Új esernyő</a>
+    </div>
+</div>
+<%- include('footer') -%>

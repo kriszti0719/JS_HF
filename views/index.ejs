@@ -1,0 +1,38 @@
+<%- include('header', {pagetitle: 'Főoldal'}) -%>
+<%- include('navbar', {active: 'fooldal'}) -%>
+
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <h1>Esernyők</h1>
+            <br>
+
+            <table class="table">
+                <thead class="thead-dark">
+                <tr>
+                    <th scope="col">Név</th>
+                    <th scope="col">Szín</th>
+                    <th scope="col">Tulajdonos</th>
+                    <th scope="col">Szobaszám</th>
+                </tr>
+                </thead>
+                <tbody>
+                <% umbrellas.forEach(function(umbrella){ %>
+                <tr>
+                    <td><a href="/umbrella/<%=umbrella._id%>" class="text-body"><%=umbrella.name%></a> </td>
+                    <td><%=umbrella.color%></td>
+                    <td><a href="/user/data/:userid"class="text-body"><%=umbrella.owner%></a></td>
+                    <td><%=umbrella.room%></td>
+                </tr>
+                <% }); %>
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<%- include('footer') -%>

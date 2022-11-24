@@ -1,5 +1,10 @@
 const express = require('express');
 const app = express();
+<<<<<<< Updated upstream
+=======
+
+app.set('view engine', 'ejs');
+>>>>>>> Stashed changes
 
 app.use(express.static('static'));
 

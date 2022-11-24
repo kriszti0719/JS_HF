@@ -2,9 +2,12 @@
  * Load all umbrellas from the database
  * The result is saved to res.locals.umbrellas
  */
+const requireOption = require('../requireOption');
 
-module.exports = function (objectrepository) {
+module.exports = function(objectrepository) {
+    const UmbrellaModel = requireOption(objectrepository, 'UmbrellaModel');
     return function (req, res, next) {
+<<<<<<< Updated upstream
         res.locals.umbrellas = [
             {
                 _id: 'id1',
@@ -29,5 +32,25 @@ module.exports = function (objectrepository) {
             }
         ];
         next();
+=======
+        if (typeof res.locals.user === 'undefined') {
+            UmbrellaModel.find({}, (err, umbrellas) => {
+                if (err){
+                    return next(err);
+                }
+                res.locals.umbrellas = umbrellas;
+                return next();
+            });
+        }
+        else {
+            UmbrellaModel.find({_owner: res.locals.user._id}, (err, umbrellas) => {
+                if (err){
+                    return next(err);
+                }
+                res.locals.umbrellas = umbrellas;
+                return next();
+            });
+        }
+>>>>>>> Stashed changes
     };
 };

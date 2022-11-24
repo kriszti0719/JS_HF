@@ -21,7 +21,7 @@
                 <tr>
                     <td><a href="/umbrella/<%=umbrella._id%>" class="text-body"><%=umbrella.name%></a> </td>
                     <td><%=umbrella.color%></td>
-                    <td><a href="/user/data/:userid"class="text-body"><%=umbrella.owner%></a></td>
+                    <td><a href="/user/data/<%=umbrella._owner%>"class="text-body"><%=umbrella.owner%></a></td>
                     <td><%=umbrella.room%></td>
                 </tr>
                 <% }); %>

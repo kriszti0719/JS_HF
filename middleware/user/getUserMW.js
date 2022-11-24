@@ -3,6 +3,7 @@
  * The result is saved to res.locals.umbrellas
  */
 
+<<<<<<< Updated upstream
 module.exports = function (objectrepository) {
     return function (req, res, next) {
         res.locals.umbrellas = [
@@ -29,5 +30,21 @@ module.exports = function (objectrepository) {
             }
         ];
         next();
+=======
+const requireOption = require('../requireOption');
+
+module.exports = function(objectrepository) {
+    const UserModel = requireOption(objectrepository, 'UserModel');
+
+    return function(req, res, next) {
+        UserModel.findOne({ _id: req.params.userid }, (err, user) => {
+            if (err || !user) {
+                return next(err);
+            }
+
+            res.locals.user = user;
+            return next();
+        });
+>>>>>>> Stashed changes
     };
 };

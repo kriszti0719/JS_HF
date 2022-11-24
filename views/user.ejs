@@ -1,10 +1,10 @@
 <%- include('header', {pagetitle: 'Felhasználói adatok'}) -%>
 <%- include('navbar', {active: 'users'}) -%>
-
+<br>
 <div class="container">
     <div class="row">
         <div class="col-12">
-            <h1><h4><%=user.nname%></h4></h1>
+            <h1><%=user.name%></h1>
         </div>
     </div>
 </div>
@@ -17,7 +17,7 @@
             <h2>Becenév:</h2>
         </div>
         <div class="col-6">
-            <h4><%=user.nname%></h4>
+            <h4><%=user.nick%></h4>
         </div>
     </div>
     <div class="row">
@@ -55,19 +55,26 @@
             </tr>
             </thead>
             <tbody>
+            <% umbrellas.forEach(function(umbrella){ %>
             <tr>
+                <td><%=umbrella.name%></td>
                 <td>
-                    Viharkabát
+                    <a href="/umbrella/<%=user._id%>/edit/<%=umbrella._id%>"><i class="fa-solid fa-pen-to-square"></i></a>
+                    <a href="/umbrella/<%=user._id%>/delete/<%=umbrella._id%>"><i class="fa-solid fa-trash-can"></i></a>
                 </td>
+<<<<<<< Updated upstream
                 <td>
                     <a href="/umbrella/edit/:userid/:umbrellaid"><i class="fa-solid fa-pen-to-square"></i></a>
                     <a href="/user"><i class="fa-solid fa-trash-can"></i></a>
                 </td>
 
+=======
+>>>>>>> Stashed changes
             </tr>
+            <% }); %>
             </tbody>
         </table>
-        <a href="/umbrella/:umbrellaid" class="btn btn-block btn-primary">Új esernyő</a>
+        <a href="/umbrella/<%=user._id%>/new" class="btn btn-block btn-primary">Új esernyő</a>
     </div>
 </div>
 <%- include('footer') -%>

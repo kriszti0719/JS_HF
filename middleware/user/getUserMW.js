@@ -1,8 +1,9 @@
 /**
- * Load all umbrellas from the database
- * The result is saved to res.locals.umbrellas
+ * Load a user from the database using the :userid param
+ * The result is saved to res.locals.user
  */
 
+<<<<<<< Updated upstream
 module.exports = function (objectrepository) {
     return function (req, res, next) {
         res.locals.umbrellas = [
@@ -29,5 +30,21 @@ module.exports = function (objectrepository) {
             }
         ];
         next();
+=======
+const requireOption = require('../requireOption');
+
+module.exports = function(objectrepository) {
+    const UserModel = requireOption(objectrepository, 'UserModel');
+
+    return function(req, res, next) {
+        UserModel.findOne({ _id: req.params.userid }, (err, user) => {
+            if (err || !user) {
+                return next(err);
+            }
+
+            res.locals.user = user;
+            return next();
+        });
+>>>>>>> Stashed changes
     };
 };

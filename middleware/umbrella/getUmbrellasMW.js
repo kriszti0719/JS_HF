@@ -5,6 +5,7 @@
 
 module.exports = function (objectrepository) {
     return function (req, res, next) {
+<<<<<<< Updated upstream
         res.locals.umbrellas = [
             {
                 _id: 'id1',
@@ -29,5 +30,25 @@ module.exports = function (objectrepository) {
             }
         ];
         next();
+=======
+        if (typeof res.locals.user === 'undefined') {
+            UmbrellaModel.find({}, (err, umbrellas) => {
+                if (err){
+                    return next(err);
+                }
+                res.locals.umbrellas = umbrellas;
+                return next();
+            });
+        }
+        else {
+            UmbrellaModel.find({_owner: res.locals.user._id}, (err, umbrellas) => {
+                if (err){
+                    return next(err);
+                }
+                res.locals.umbrellas = umbrellas;
+                return next();
+            });
+        }
+>>>>>>> Stashed changes
     };
 };

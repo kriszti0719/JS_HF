@@ -22,7 +22,11 @@
                 <tr>
                     <td><a href="/user/data/<%=user._id%>" class="text-body"><%=user.name%></a> </td>
                     <td><%=user.room%></td>
+<<<<<<< Updated upstream
                     <td> <% if (user.admin === 'y') {%><i class="fa-solid fa-check"></i><% }%></td>
+=======
+                    <td> <% if (user.admin === true) {%><i class="fa-solid fa-check"></i><% }%></td>
+>>>>>>> Stashed changes
                 </tr>
                 <% }); %>
             </tbody>

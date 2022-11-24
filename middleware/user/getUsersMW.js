@@ -5,6 +5,7 @@
 
 module.exports = function (objectrepository) {
     return function (req, res, next) {
+<<<<<<< Updated upstream
 
         res.locals.users = [
             {
@@ -34,5 +35,14 @@ module.exports = function (objectrepository) {
         ];
 
         next();
+=======
+        UserModel.find({}, (err, users) => {
+            if (err){
+                return next(err);
+            }
+            res.locals.users = users;
+            return next();
+        });
+>>>>>>> Stashed changes
     };
 };

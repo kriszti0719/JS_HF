@@ -10,6 +10,7 @@ const getUserMW = require('../middleware/user/getUserMW');
 const getUsersMW = require('../middleware/user/getUsersMW');
 const saveUserMW = require('../middleware/user/saveUserMW');
 
+<<<<<<< Updated upstream
 module.exports = function (app) {
     const objectRepository = {};
 
@@ -25,6 +26,16 @@ module.exports = function (app) {
         getUserMW(objectRepository),
         getUmbrellasMW(objectRepository),
         renderMW(objectRepository, 'user'));
+=======
+const UserModel = require('../models/user');
+const UmbrellaModel = require('../models/umbrella');
+
+module.exports = function (app) {
+    const objectRepository = {
+        UserModel: UserModel,
+        UmbrellaModel: UmbrellaModel
+    };
+>>>>>>> Stashed changes
 
     app.use('/user/new',
         saveUserMW(objectRepository),
@@ -39,17 +50,51 @@ module.exports = function (app) {
         getUserMW(objectRepository),
         delUserMW(objectRepository));
 
+<<<<<<< Updated upstream
     app.get('/user/umbrella/:umbrellaid',
         getUmbrellaMW(objectRepository),
         renderMW(objectRepository, 'addUmbrella'));
 
     app.use('/umbrella/edit/:userid/:umbrellaid',
+=======
+    app.get('/user/data/:userid',
+        getUserMW(objectRepository),
+        getUmbrellasMW(objectRepository),
+        renderMW(objectRepository, 'user'));
+
+    app.get('/user/list',
+        getUsersMW(objectRepository),
+        renderMW(objectRepository, 'users'));
+
+    app.use('/umbrella/:userid/new',
+        getUserMW(objectRepository),
+        saveUmbrellaMW(objectRepository),
+        renderMW(objectRepository, 'addUmbrella'));
+
+    app.use('/umbrella/:userid/edit/:umbrellaid',
+>>>>>>> Stashed changes
         getUserMW(objectRepository),
         getUmbrellaMW (objectRepository),
         saveUmbrellaMW(objectRepository),
         renderMW(objectRepository,'editUmbrella'));
 
+<<<<<<< Updated upstream
     app.get('/umbrella/delete/:userid',
         getUmbrellaMW(objectRepository),
         delUmbrellaMW(objectRepository));
+=======
+    app.get('/umbrella/:userid/delete/:umbrellaid',
+        getUserMW(objectRepository),
+        getUmbrellaMW(objectRepository),
+        delUmbrellaMW(objectRepository));
+
+    app.get('/umbrella/:umbrellaid',
+        getUserMW(objectRepository),
+        getUmbrellaMW(objectRepository),
+        renderMW(objectRepository, 'umbrella'));
+
+    app.get('/',
+        getUmbrellasMW(objectRepository),
+        renderMW(objectRepository, 'index'));
+>>>>>>> Stashed changes
 };

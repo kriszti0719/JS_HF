@@ -1,0 +1,25 @@
+Tesztelés menete (magamnak, a későbbiekre nézve):
+
+    -   Feltelepítjük a mochat és a chait
+
+    -   Lehetőleg mindkettőt dev-dependency-be...
+
+        Ennek oka, hogy a mocha elvileg (neten olvastam) a 6-os verzió óta kicsit érdekesen működik helyenként,
+        mindenesetre a parancssoros változat kicsit szerencsétlen, és (nálam legalábbis) nem találja meg egyedül
+        az almappákban létrehozott teszteket, csak ha telibe a test mappába hányjuk bele. Ez viszont nem valami szép,
+        én szerettem volna, ha a tesztek közt is lenne egyfajta strukturális felépítés, ami kicsit átláthatóbbá tenné,
+        ezért született ez a megoldás (biztos létezik más is, én ezt találtam, nekem ez működött):
+
+    -   Szóval dev-dependency-ként kerüljön fel mindkettő
+
+    -   Ezután a .json fájlban a "scripts"-ben megadjuk az összes teszt elérési útvonalát, pontosabban azokat a mappákat,
+    amikben ténylegesen teszt fájlok találhatók.
+
+    -   Esetemben, ha minden middleware-t tesztelnék, akkor 3-at is meg kellene adnom:
+            -   test/unit/middleware/umbrella" - az esernyőkhöz tartozó middleware-ek tesztjei
+            -   test/unit/middleware/user" - a felhasználókhoz tartozó middleware-ek tesztjei
+            -   test/unit/middleware" - az egyéb, mappákba nem sorolt middleware-ek tesztjei    pl. renderMW
+            Hogy egyszerre fusson le mind, ezeket szóközzel elválasztva kell írni:
+                    "test": "mocha  test/unit/middleware/umbrella test/unit/middleware/user test/unit/middleware"
+
+    - Ha megvannak írva a tesztek, akkor parancssorban a "mocha" parancs helyett az "npm test"-et adjuk ki.

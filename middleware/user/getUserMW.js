@@ -1,6 +1,6 @@
 /**
- * Load all umbrellas from the database
- * The result is saved to res.locals.umbrellas
+ * Load a user from the database using the :userid param
+ * The result is saved to res.locals.user
  */
 
 <<<<<<< Updated upstream

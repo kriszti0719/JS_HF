@@ -2,16 +2,6 @@
  * Removes a umbrella from the database, the entity used here is: res.locals.umbrella
  * Redirects to /user/:userid after delete
  */
-<<<<<<< Updated upstream
-
-const requireOption = require('../requireOption');
-
-module.exports = function (objectrepository) {
-    return function (req, res, next) {
-        next();
-    };
-};
-=======
 const requireOption = require("../requireOption");
 
 module.exports = function (objectrepository) {
@@ -28,4 +18,3 @@ module.exports = function (objectrepository) {
     });
   };
 };
->>>>>>> Stashed changes

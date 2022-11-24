@@ -2,8 +2,10 @@
  * Load all umbrellas from the database
  * The result is saved to res.locals.umbrellas
  */
+const requireOption = require('../requireOption');
 
-module.exports = function (objectrepository) {
+module.exports = function(objectrepository) {
+    const UmbrellaModel = requireOption(objectrepository, 'UmbrellaModel');
     return function (req, res, next) {
 <<<<<<< Updated upstream
         res.locals.umbrellas = [

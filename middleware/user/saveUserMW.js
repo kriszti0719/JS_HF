@@ -4,16 +4,6 @@
  * Redirects to /user/list after success
  */
 
-<<<<<<< Updated upstream
-module.exports = function (objectrepository) {
-    return function (req, res, next) {
-//        if(typeof req.body.name === 'undefined'){
-//            return next();
-//        } ----> Így ez semmit nem csinál get lekérdezéseknél.
-//        next();
-    };
-};
-=======
 const requireOption = require("../requireOption");
 
 module.exports = function (objectrepository) {
@@ -52,4 +42,3 @@ module.exports = function (objectrepository) {
     });
   };
 };
->>>>>>> Stashed changes

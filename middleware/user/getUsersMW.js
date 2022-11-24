@@ -2,8 +2,10 @@
  * Load all users from the database
  * The result is saved to res.locals.users
  */
+const requireOption = require('../requireOption');
 
-module.exports = function (objectrepository) {
+module.exports = function(objectrepository) {
+    const UserModel = requireOption(objectrepository, 'UserModel');
     return function (req, res, next) {
 <<<<<<< Updated upstream
 

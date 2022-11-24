@@ -3,10 +3,22 @@
  * Redirects to /user/list after delete
  */
 
-module.exports = function (objectrepository) {
-    return function (req, res, next) {
-//        res.locals.user.delete();
-//        res.redirect('/user/list');
-        next();
+/**Ezt csak megírtam, de végül nem lett használva*/
+
+const requireOption = require('../requireOption');
+
+module.exports = function(objectrepository) {
+    return function(req, res, next) {
+        if (typeof res.locals.user === 'undefined') {
+            return next();
+        }
+
+        res.locals.user.remove(err => {
+            if (err) {
+                return next(err);
+            }
+
+            return res.redirect('/user/list');
+        });
     };
 };

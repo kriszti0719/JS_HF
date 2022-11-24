@@ -4,8 +4,36 @@
  * Redirects to /user/:userid after success
  */
 
-module.exports = function (objectrepository) {
-    return function (req, res, next) {
-        next();
+const requireOption = require('../requireOption');
+
+module.exports = function(objectrepository) {
+    const UmbrellaModel = requireOption(objectrepository, 'UmbrellaModel');
+
+    return function(req, res, next) {
+        if (
+            typeof req.body.name === 'undefined' ||
+            typeof req.body.color === 'undefined' ||
+            typeof res.locals.user === 'undefined'
+        ) {
+            return next();
+        }
+
+        if (typeof res.locals.umbrella === 'undefined') {
+            res.locals.umbrella = new UmbrellaModel();
+        }
+
+        res.locals.umbrella.name = req.body.name;
+        res.locals.umbrella.color = req.body.color;
+        res.locals.umbrella.room = res.locals.user.room;
+        res.locals.umbrella.owner = res.locals.user.nick;
+        res.locals.umbrella._owner = res.locals.user._id;
+
+
+        res.locals.umbrella.save(err => {
+            if (err) {
+                return next(err);
+            }
+            return res.redirect(`/user/data/${res.locals.user._id}`);
+        });
     };
 };

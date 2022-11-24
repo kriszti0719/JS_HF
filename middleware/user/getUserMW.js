@@ -1,17 +1,33 @@
 /**
- * Load a user from the database using the :userid param
- * The result is saved to res.locals.user
+ * Load all umbrellas from the database
+ * The result is saved to res.locals.umbrellas
  */
 
 module.exports = function (objectrepository) {
     return function (req, res, next) {
-//        db("result", function(result)){
-//            if (result.length === 0) {
-//                return res.redirect('/user/list');        //nem létezik a user
-//           }
-//            res.locals.user = result[0];
-//            next();
-//        }
+        res.locals.umbrellas = [
+            {
+                _id: 'id1',
+                name: 'Viharkabát.....',
+                color: 'fekete',
+                owner: 'Laci',
+                room: 402
+            },
+            {
+                _id: 'id2',
+                name: 'Pinky',
+                color: 'világoskék',
+                owner: 'Noel',
+                room: 1612
+            },
+            {
+                _id: 'id3',
+                name: 'SárgaVillanás',
+                color: 'citromsárga',
+                owner: 'Anna',
+                room: 816
+            }
+        ];
         next();
     };
 };

@@ -1,0 +1,111 @@
+<%- include('header', {pagetitle: 'Hozzáadás'}) -%>
+<%- include('navbar', {active: 'none'}) -%>
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <h1>Új felhasználó regisztrálása</h1>
+        </div>
+    </div>
+</div>
+<br>
+<br>
+
+<div class="container">
+    <div class="row">
+        <div class="col-6">
+            <h2>Név:</h2>
+        </div>
+        <div class="col-6">
+            <form>
+                <div class="form-group">
+                    <input type="text" class="form-control" id="exampleInputName" placeholder="Pl.: Minta Mariann">
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-6">
+            <h2>Becenév:</h2>
+        </div>
+        <div class="col-6">
+            <form>
+                <div class="form-group">
+                    <input type="text" class="form-control" id="exampleInputColor" placeholder="Pl.: Mari">
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-6">
+            <h2>Szobaszám:</h2>
+        </div>
+        <div class="col-6">
+            <form>
+                <div class="form-group">
+                    <input type="text" class="form-control" id="exampleInputRoomNum" placeholder="Pl.: 1016">
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-6">
+            <h2>Asztal:</h2>
+        </div>
+        <div class="col-6">
+            <form>
+                <div class="form-group">
+                    <select class="form-control form-control-sm">
+                        <option>Jobb</option>
+                        <option>Bal</option>
+                    </select>
+                    <select class="form-control form-control-sm">
+                        <option>Első</option>
+                        <option>Hátsó</option>
+                    </select>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-6">
+            <h2>Admin:</h2>
+        </div>
+        <div class="col-6">
+            <form>
+                <div class="form-group">
+                    <select class="form-control form-control-sm">
+                        <option>Igen</option>
+                        <option>Nem</option>
+                    </select>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-6">
+            <h2>Jelszó:</h2>
+        </div>
+        <div class="col-6">
+            <form>
+                <div class="form-group">
+                    <input type="text" class="form-control" id="exampleInputColor" placeholder="Pl.: 123">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<br>
+<br>
+
+<div class="container">
+    <div class="row">
+        <div class="col-6">
+            <a href="/user/list" class="btn btn-block btn-primary"><i class="fa-solid fa-check"></i></a>
+        </div>
+        <div class="col-6">
+            <a href="/user/list" class="btn btn-block btn-danger"><i class="fa-solid fa-trash"></i></a>
+        </div>
+    </div>
+</div>
+<%- include('footer') -%>
